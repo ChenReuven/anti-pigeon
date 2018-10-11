@@ -28,6 +28,7 @@ to fly of your balcony
 ### Video
 <div align="left">
   <a href="https://youtu.be/VuRRXMzhVpg">Video</a>
+  <span>(sorry for the video quality - it will be fix)</span>
 </div>
 
 ### Images
