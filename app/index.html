@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Anti Peigon</title>
+	<link href="./assets/style/main.css" rel="stylesheet">
+	<link href="./assets/style/slider.css" rel="stylesheet">
+</head>
+
+<body id="body">
+	<div class="title">Anti Pigeon</div>
+	<div class="container">
+		<video id="video"></video>
+
+		<div class="spec-container">
+			<div class="status-container">
+				<span>status:</span>
+				<span id="status-detection">Pending</span>
+			</div>
+			<div class="slidecontainer">
+				<div>
+					<button id="start-btn" class="green">Start</button>
+					<button id="stop-btn" class="red">Stop</button>
+					<button id="fullscreen-btn">Full Screen</button>
+				</div>
+				<div class="range-container">
+					<div class="sensitivity">sensitivity(<span>Value: <span id="demo"></span></span>)</div>
+					<input name="range" type="range" min="1" max="250" value="100" class="slider" id="myRange">
+				</div>
+			</div>
+			<div class="score">
+				Score: <span id="score">?</span>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.core.min.js"></script>
+	<script src="./core/diff-cam-engine.js"></script>
+	<script src="./assets/js/main.js"></script>
+</body>
+
+</html>

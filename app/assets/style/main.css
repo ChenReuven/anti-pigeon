@@ -1,0 +1,57 @@
+body {
+	font: 1.5em/1.2 sans-serif;
+}
+
+button {
+	width: 50%;
+	margin: 10px;
+	padding: 10px;
+}
+
+.title{
+	text-align: center;
+	text-transform: uppercase;
+	padding-bottom: 10px;
+	background: mediumpurple;
+	color: white;
+}
+
+.container{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.spec-container {
+	text-align: center;
+}
+
+.range-container {
+	margin: 25px;
+}
+
+.sensitivity{
+	margin-bottom: 15px;
+}
+
+.score {
+	margin-top: 15px;
+}
+
+video {
+	width: 100%;
+	background-color: #999;
+}
+
+.red {
+	background: red;
+	color: white;
+}
+
+.yellow {
+	background: yellow;
+}
+
+.green {
+	background: green;
+	color: white;
+}
