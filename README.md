@@ -6,13 +6,13 @@ Do u also have problem with pigeons in your balcony?
 This application maybe the answer for that's problem.
 
 The app will detect changes in the camera area and play sound (meanwhile its a dog barks) 
-with a red flashlight on the screen and it will make the pegions
+with a red flashlight on the screen and it will make the pigeons
 to fly of your balcony
 
 ### What U Need?
-1. old phone that u dont use with camera and internet connection
-2. run [Demo]("https://chenreuven.github.io/anti-pigeon/app)
-3. put it in convience place for detect pegions
+1. old phone that u don't use with camera and internet connection
+2. run [Demo]("https://chenreuven.github.io/anti-pigeon/app")
+3. put it in convenience place for detect pigeons
 4. play the app
 
 
@@ -24,7 +24,7 @@ to fly of your balcony
 3. click "play"
 
 ### Video And Image
-![Image](src)
+![Image]("https://chenreuven.github.io/anti-pigeon/assets/app-ps1.png")
 
 [Video]("youtube")
 
