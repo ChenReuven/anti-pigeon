@@ -11,23 +11,27 @@ to fly of your balcony
 
 ### What U Need?
 1. old phone that u don't use with camera and internet connection
-2. run [Demo]("https://chenreuven.github.io/anti-pigeon/app")
+2. run the **Demo** in your app
 3. put it in convenience place for detect pigeons
 4. play the app
 
 
 ### Demo
-[Demo](https://chenreuven.github.io/anti-pigeon/app)
+<div align="center">
+  <a href="https://chenreuven.github.io/anti-pigeon/app">Demo</a>
+</div>
 
 1. Put it in correct place
 2. play with your desire sensitivity
 3. click "play"
 
-### Video And Image
-[Video](https://youtu.be/VuRRXMzhVpg)
+### Video
+<div align="center">
+  <a href="https://youtu.be/VuRRXMzhVpg">Video</a>
+</div>
 
+### Images
 ![Image](https://chenreuven.github.io/anti-pigeon/assets/app-ps1.png)
-
 
 
 ### Code
