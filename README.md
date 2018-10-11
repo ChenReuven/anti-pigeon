@@ -17,7 +17,7 @@ to fly of your balcony
 
 
 ### Demo
-<div align="center">
+<div align="left">
   <a href="https://chenreuven.github.io/anti-pigeon/app">Demo</a>
 </div>
 
@@ -26,7 +26,7 @@ to fly of your balcony
 3. click "play"
 
 ### Video
-<div align="center">
+<div align="left">
   <a href="https://youtu.be/VuRRXMzhVpg">Video</a>
 </div>
 
