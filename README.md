@@ -1,36 +1,35 @@
-## Welcome to GitHub Pages
+## Anti Pigeon Application
 
-You can use the [editor on GitHub](https://github.com/ChenReuven/anti-pigeon/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+####Purpose
+Do u also have problem with pigeons in your balcony?
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This application maybe the answer for that's problem.
 
-### Markdown
+The app will detect changes in the camera area and play sound (meanwhile its a dog barks) 
+with a red flashlight on the screen and it will make the pegions
+to fly of your balcony
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### What U Need?
+1. old phone that u dont use with camera and internet connection
+2. run [Demo]("https://chenreuven.github.io/anti-pigeon/app)
+3. put it in convience place for detect pegions
+4. play the app
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+### Demo
+[Demo]("https://chenreuven.github.io/anti-pigeon/app)
 
-- Bulleted
-- List
+1. Put it in correct place
+2. play with your desire sensitivity
+3. click "play"
 
-1. Numbered
-2. List
+### Video And Image
+![Image](src)
 
-**Bold** and _Italic_ and `Code` text
+[Video]("youtube")
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ChenReuven/anti-pigeon/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Code
+This is pure JS application
 
 ### Support or Contact
 
