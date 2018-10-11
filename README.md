@@ -17,16 +17,18 @@ to fly of your balcony
 
 
 ### Demo
-[Demo]("https://chenreuven.github.io/anti-pigeon/app)
+[Demo](https://chenreuven.github.io/anti-pigeon/app)
 
 1. Put it in correct place
 2. play with your desire sensitivity
 3. click "play"
 
 ### Video And Image
-![Image]("https://chenreuven.github.io/anti-pigeon/assets/app-ps1.png")
+[Video](https://youtu.be/VuRRXMzhVpg)
 
-[Video]("youtube")
+![Image](https://chenreuven.github.io/anti-pigeon/assets/app-ps1.png)
+
+
 
 ### Code
 This is pure JS application
