@@ -7,6 +7,7 @@ const stopBtn       = document.getElementById('stop-btn');
 const fullscreenBtn = document.getElementById('fullscreen-btn');
 let fullscreen      = false;
 const status        = document.getElementById('status-detection');
+let sound = null;
 
 // URLS
 const DOG_SOUND1_URL    = 'assets/audio/dog-sound-1.mp3';
@@ -29,10 +30,6 @@ const antiPigeonsVoices = [
   HAWK_SOUND5_URL,
   ALDER_SOUND1_URL
 ];
-
-let sound = new Howl({
-  src: [DOG_SOUND1_URL]
-});
 
 // Slider
 const slider             = document.getElementById("myRange");
@@ -102,6 +99,11 @@ function capture(payload) {
   const scoreResult = payload.score;
   console.log('sliderValue = ', sliderValue);
   if (scoreResult > sliderValue) {
+    if(!sound){
+      sound = new Howl({
+        src: [DOG_SOUND1_URL]
+      });
+    }
     if (!isSoundPlaying(sound)) {
       const item = getRandomVoice();
       sound      = new Howl({
