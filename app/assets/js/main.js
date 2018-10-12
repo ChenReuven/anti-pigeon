@@ -18,7 +18,6 @@ const HAWK_SOUND3_URL   = 'assets/audio/hawk-sound-3.wav';
 const HAWK_SOUND4_URL   = 'assets/audio/hawk-sound-4.wav';
 const HAWK_SOUND5_URL   = 'assets/audio/hawk-sound-5.mp3';
 const ALDER_SOUND1_URL   = 'assets/audio/alder-sound-1.wav';
-const KRAAIL_SOUND1_URL   = 'assets/audio/kraail-sound-1.wav';
 const antiPigeonsVoices = [
   DOG_SOUND1_URL,
   DOG_SOUND2_URL,
@@ -28,8 +27,7 @@ const antiPigeonsVoices = [
   HAWK_SOUND3_URL,
   HAWK_SOUND4_URL,
   HAWK_SOUND5_URL,
-  ALDER_SOUND1_URL,
-  KRAAIL_SOUND1_URL
+  ALDER_SOUND1_URL
 ];
 
 let sound = new Howl({
