@@ -1,3 +1,23 @@
+// App Config
+const config = {
+  googleSpreadSheet: {
+    useGoogleSpreadSheet: true,
+    BASE_URL: `https://docs.google.com/forms/d/e`,
+    BASE_URL_POSTFIX: `formResponse`,
+    FORM_ID: '1FAIpQLSeczUMWDuYamXY99RXdGzvXDfYlevKN6O2M0t_loVV6KUOX7Q',
+    FORM_ENTRY_ID_KEY: 'entry.1587568766',
+    FORM_FVV_KEY: 'fvv',
+    FORM_FVV_VALUE: 1,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }
+  }
+}
+// https://docs.google.com/forms/d/e/1FAIpQLSdSpDrJpFzGUS5416x3unwghA6CGlzrl2sc2iMSPJnFV3TdlA/formResponse
+// entry.519495850
+
+config.FULL_FORM_URL = `${config.googleSpreadSheet.BASE_URL}/${config.googleSpreadSheet.FORM_ID}/${config.googleSpreadSheet.BASE_URL_POSTFIX}`;
+
 // App Init
 const video         = document.getElementById('video');
 const score         = document.getElementById('score');
@@ -63,6 +83,19 @@ fullscreenBtn.addEventListener('click', function () {
   }
 });
 
+// Form - DB
+function saveMovementCaptureSceneToDB(movementScore) {
+  const bodyFormData = new FormData();
+  bodyFormData.set(config.googleSpreadSheet.FORM_ENTRY_ID_KEY, movementScore);
+  bodyFormData.set(config.googleSpreadSheet.FORM_FVV_KEY, config.googleSpreadSheet.FORM_FVV_VALUE);
+  return axios.post(
+    config.FULL_FORM_URL,
+    bodyFormData, {
+      headers: config.googleSpreadSheet.headers
+    }
+  );
+}
+
 // Diff Cam
 function initSuccess() {
 }
@@ -111,6 +144,7 @@ function capture(payload) {
       });
       sound.play();
       flickeringScreen();
+      saveMovementCaptureSceneToDB(scoreResult);
     }
   }
 }
