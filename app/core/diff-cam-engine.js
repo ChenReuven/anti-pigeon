@@ -78,7 +78,7 @@ var DiffCamEngine = (function() {
 
 	function requestWebcam() {
 		var constraints = {
-			audio: true,
+			audio: false,
 			video: { width: captureWidth, height: captureHeight }
 		};
 
