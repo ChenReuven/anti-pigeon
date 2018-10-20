@@ -19,6 +19,7 @@ const config = {
 config.FULL_FORM_URL = `${config.googleSpreadSheet.BASE_URL}/${config.googleSpreadSheet.FORM_ID}/${config.googleSpreadSheet.BASE_URL_POSTFIX}`;
 
 // App Init
+let isDetectionInProgress = false;
 const video         = document.getElementById('video');
 const score         = document.getElementById('score');
 const body          = document.getElementById('body');
@@ -96,6 +97,49 @@ function saveMovementCaptureSceneToDB(movementScore) {
   );
 }
 
+// Record And Download Video
+const btn = document.querySelector('button');
+btn.disabled = false;
+btn.onclick = startRecording;
+
+// Record Video
+function startRecording(){
+  // alert('recording');
+
+  // switch button's behavior
+  //const btn = this;
+  //btn.textContent = 'stop recording';
+  //btn.onclick = stopRecording;
+
+  const chunks = []; // here we will save all video data
+  const rec = new MediaRecorder(video.srcObject);
+  // this event contains our data
+  rec.ondataavailable = e => chunks.push(e.data);
+  // when done, concatenate our chunks in a single Blob
+  rec.onstop = e => download(new Blob(chunks));
+  rec.start();
+  function stopRecording(){
+    rec.stop();
+    // switch button's behavior
+    //btn.textContent = 'start recording';
+    //btn.onclick = startRecording;
+  }
+
+  setTimeout(function () {
+    stopRecording();
+    // alert('stop recording')
+  }, 5000);
+}
+function download(blob){
+  // uses the <a download> to download a Blob
+  let a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'recorded.webm';
+  document.body.appendChild(a);
+  a.click();
+}
+
+
 // Diff Cam
 function initSuccess() {
 }
@@ -120,7 +164,7 @@ function flickeringScreen() {
   setTimeout(function () {
     clearInterval(tt);
     body.classList.remove('red')
-  }, 10000);
+  }, 7000);
 }
 
 let getRandomVoice = function () {
@@ -137,7 +181,8 @@ function capture(payload) {
         src: [DOG_SOUND1_URL]
       });
     }
-    if (!isSoundPlaying(sound)) {
+    if (!isSoundPlaying(sound) && !isDetectionInProgress) {
+      isDetectionInProgress = true;
       const item = getRandomVoice();
       sound      = new Howl({
         src: [item]
@@ -145,6 +190,11 @@ function capture(payload) {
       sound.play();
       flickeringScreen();
       saveMovementCaptureSceneToDB(scoreResult);
+      startRecording();
+
+      setTimeout(function () {
+        isDetectionInProgress = false;
+      }, 6000)
     }
   }
 }
