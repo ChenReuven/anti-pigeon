@@ -2,15 +2,18 @@
 const config = {
   googleSpreadSheet: {
     useGoogleSpreadSheet: true,
-    BASE_URL: `https://docs.google.com/forms/d/e`,
-    BASE_URL_POSTFIX: `formResponse`,
-    FORM_ID: '1FAIpQLSeczUMWDuYamXY99RXdGzvXDfYlevKN6O2M0t_loVV6KUOX7Q',
-    FORM_ENTRY_ID_KEY: 'entry.1587568766',
-    FORM_FVV_KEY: 'fvv',
-    FORM_FVV_VALUE: 1,
-    headers: {
+    BASE_URL            : `https://docs.google.com/forms/d/e`,
+    BASE_URL_POSTFIX    : `formResponse`,
+    FORM_ID             : '1FAIpQLSeczUMWDuYamXY99RXdGzvXDfYlevKN6O2M0t_loVV6KUOX7Q',
+    FORM_ENTRY_ID_KEY   : 'entry.1587568766',
+    FORM_FVV_KEY        : 'fvv',
+    FORM_FVV_VALUE      : 1,
+    headers             : {
       'Content-Type': 'application/x-www-form-urlencoded',
     }
+  },
+  recording        : {
+    RECORD_TIME: 5000
   }
 }
 // https://docs.google.com/forms/d/e/1FAIpQLSdSpDrJpFzGUS5416x3unwghA6CGlzrl2sc2iMSPJnFV3TdlA/formResponse
@@ -20,15 +23,15 @@ config.FULL_FORM_URL = `${config.googleSpreadSheet.BASE_URL}/${config.googleSpre
 
 // App Init
 let isDetectionInProgress = false;
-const video         = document.getElementById('video');
-const score         = document.getElementById('score');
-const body          = document.getElementById('body');
-const startBtn      = document.getElementById('start-btn');
-const stopBtn       = document.getElementById('stop-btn');
-const fullscreenBtn = document.getElementById('fullscreen-btn');
-let fullscreen      = false;
-const status        = document.getElementById('status-detection');
-let sound = null;
+const video               = document.getElementById('video');
+const score               = document.getElementById('score');
+const body                = document.getElementById('body');
+const startBtn            = document.getElementById('start-btn');
+const stopBtn             = document.getElementById('stop-btn');
+const fullscreenBtn       = document.getElementById('fullscreen-btn');
+let fullscreen            = false;
+const status              = document.getElementById('status-detection');
+let sound                 = null;
 
 // URLS
 const DOG_SOUND1_URL    = 'assets/audio/dog-sound-1.mp3';
@@ -39,7 +42,7 @@ const HAWK_SOUND2_URL   = 'assets/audio/hawk-sound-2.wav';
 const HAWK_SOUND3_URL   = 'assets/audio/hawk-sound-3.wav';
 const HAWK_SOUND4_URL   = 'assets/audio/hawk-sound-4.wav';
 const HAWK_SOUND5_URL   = 'assets/audio/hawk-sound-5.mp3';
-const ALDER_SOUND1_URL   = 'assets/audio/alder-sound-1.wav';
+const ALDER_SOUND1_URL  = 'assets/audio/alder-sound-1.wav';
 const antiPigeonsVoices = [
   DOG_SOUND1_URL,
   DOG_SOUND2_URL,
@@ -98,43 +101,34 @@ function saveMovementCaptureSceneToDB(movementScore) {
 }
 
 // Record And Download Video
-const btn = document.querySelector('button');
-btn.disabled = false;
-btn.onclick = startRecording;
 
-// Record Video
-function startRecording(){
-  // alert('recording');
+function startRecording() {
+  // here we will save all video data
+  const chunks = [];
+  const rec    = new MediaRecorder(video.srcObject);
 
-  // switch button's behavior
-  //const btn = this;
-  //btn.textContent = 'stop recording';
-  //btn.onclick = stopRecording;
-
-  const chunks = []; // here we will save all video data
-  const rec = new MediaRecorder(video.srcObject);
   // this event contains our data
   rec.ondataavailable = e => chunks.push(e.data);
+
   // when done, concatenate our chunks in a single Blob
   rec.onstop = e => download(new Blob(chunks));
   rec.start();
-  function stopRecording(){
+
+  function stopRecording() {
     rec.stop();
-    // switch button's behavior
-    //btn.textContent = 'start recording';
-    //btn.onclick = startRecording;
   }
 
   setTimeout(function () {
     stopRecording();
-    // alert('stop recording')
-  }, 5000);
+  }, config.recording.RECORD_TIME);
 }
-function download(blob){
+
+function download(blob) {
   // uses the <a download> to download a Blob
-  let a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'recorded.webm';
+  let a             = document.createElement('a');
+  let recordingTime = new Date().toLocaleString();
+  a.href            = URL.createObjectURL(blob);
+  a.download        = `anti-pigeon---${recordingTime}.webm`;
   document.body.appendChild(a);
   a.click();
 }
@@ -176,15 +170,15 @@ function capture(payload) {
   const scoreResult = payload.score;
   console.log('sliderValue = ', sliderValue);
   if (scoreResult > sliderValue) {
-    if(!sound){
+    if (!sound) {
       sound = new Howl({
         src: [DOG_SOUND1_URL]
       });
     }
     if (!isSoundPlaying(sound) && !isDetectionInProgress) {
       isDetectionInProgress = true;
-      const item = getRandomVoice();
-      sound      = new Howl({
+      const item            = getRandomVoice();
+      sound                 = new Howl({
         src: [item]
       });
       sound.play();
